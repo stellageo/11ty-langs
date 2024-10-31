@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="" dir="ltr">
+<html  lang="el" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,19 +21,8 @@
       href="http://localhost:8080/about/"
     />
 
-    
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="http://localhost:8080/en/about/"
-    />
-    
 
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="http://localhost:8080/en/about/"
-    />
+
 
     <link rel="canonical" href="http://localhost:8080/about/" />
     <meta
@@ -48,32 +37,34 @@
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Υποσελίδα στα ελληνικά" />
     <meta property="og:url" content="http://localhost:8080/about/" />
-    <meta property="og:locale" content="en" />
+ 
     <meta property="og:image" content="http://localhost:8080/opengraph.jpg" />
   </head>
 
   <body>
     
 
-<a href="#main" class="skip-link">Jump to main content</a>
+<a href="#main" class="skip-link">Μετάβαση στο κυρίως περιεχόμενο</a>
 
 <header>
-  <nav aria-label="Primary">
+  el 
+  activePage: 
+  <nav aria-label="Βασικό">
     <ul>
       
       <li>
         <a
-          href="/en/"
+          href="/"
           
-          >Home</a
+          >Αρχική</a
         >
       </li>
       
       <li>
         <a
-          href="/en/about/"
-          
-          >About me</a
+          href="/about/"
+           aria-current="page" data-state="active"
+          >Σχετικά</a
         >
       </li>
       
@@ -85,6 +76,8 @@
     <main id="#main">
       <h1>Σχετικά με εμένα</h1>
       <p>Σχετικά με εμένα στα ελληνικα</p>
+<p>el
+el</p>
 
     </main>
 

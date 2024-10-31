@@ -1,11 +1,13 @@
-{% set activePage = page.url %}
+{% set activePage = url %}
 
-<a href="#main" class="skip-link">{{ languages[page.lang].skipText }}</a>
+<a href="#main" class="skip-link">{{ languages[lang].skipText }}</a>
 
 <header>
-  <nav aria-label="{{ languages[page.lang].ariaPrimary }}">
+  {{lang}} 
+  activePage: {{activePage | dump}}
+  <nav aria-label="{{ languages[lang].ariaPrimary }}">
     <ul>
-      {% for item in navigation[page.lang] %}
+      {% for item in navigation[lang] %}
       <li>
         <a
           href="{{ item.url }}"
