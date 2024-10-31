@@ -10,14 +10,14 @@
 # are served without redirects.
 
 # Redirect for end-user’s browser preference override
-[[redirects]]
-  from = "/*"
-  to = "/en/:splat"
-  status = 302
-  conditions = {Language = ["en"]}
+# [[redirects]]
+ #  from = "/*"
+ #  to = "/en/:splat"
+ #  status = 302
+  # conditions = {Language = ["en"]}
 
 # Default
-[[redirects]]
-  from = "/*"
-  to = "/el/:splat"
-  status = 200
+# [[redirects]]
+ #  from = "/*"
+ #  to = "/el/:splat"
+ #  status = 200
