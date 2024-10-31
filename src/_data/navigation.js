@@ -12,11 +12,11 @@ export default {
   el: [
     {
       text: 'Αρχική',
-      url: '/el/'
+      url: '/'
     },
     {
       text: 'Σχετικά',
-      url: '/el/about/'
+      url: '/about/'
     }
   ]
 };

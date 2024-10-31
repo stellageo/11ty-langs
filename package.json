@@ -1,16 +1,11 @@
 {
-  "name": "eleventy-i18n",
+  "name": "11ty-langs",
   "version": "2.0.0",
-  "description": "Minimal starter for localized content, using Eleventy's own Internationalization (I18n) plugin",
+  "description": "Minimal starter for localized 11ty without any plugin",
   "license": "ISC",
   "type": "module",
   "author": {
-    "name": "Lene Saile",
-    "url": "https://www.lenesaile.com/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/11ty/eleventy-i18n.git"
+    "name": "Stella Geo"
   },
   "engines": {
     "node": ">=18.x.x"

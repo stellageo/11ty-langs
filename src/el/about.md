@@ -1,7 +1,11 @@
 ---
 title: 'Σχετικά με εμένα'
 description: 'Υποσελίδα στα ελληνικά'
-slugOverride: sobre mi
+slug: about
+permalink: '/about/'
 ---
 
 Σχετικά με εμένα στα ελληνικα
+
+{{ lang}}
+{{ locale }}
