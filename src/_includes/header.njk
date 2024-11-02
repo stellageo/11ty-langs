@@ -3,8 +3,6 @@
 <a href="#main" class="skip-link">{{ languages[lang].skipText }}</a>
 
 <header>
-  {{lang}} 
-  activePage: {{activePage | dump}}
   <nav aria-label="{{ languages[lang].ariaPrimary }}">
     <ul>
       {% for item in navigation[lang] %}
@@ -24,4 +22,5 @@
 
     </ul>
   </nav>
+  url is: {{page.url}}
 </header>
