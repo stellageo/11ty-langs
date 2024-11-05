@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/adeadpi/langsdemo/
+    - /bin/cp -R _site $DEPLOYPATH
