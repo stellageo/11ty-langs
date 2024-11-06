@@ -2,8 +2,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-  
 jobs:
   run_pull:
     name: run pull
@@ -21,3 +19,32 @@ jobs:
       run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Run this job on the latest Ubuntu version
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2 # Check out your repository code
+
+      - name: SSH and run commands
+        env:
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} # Reference the private key stored in GitHub Secrets
+        run: |
+          echo "$PRIVATE_KEY" > private_key.pem # Write the private key to a file
+          chmod 600 private_key.pem # Set the appropriate permissions for the key file
+
+          # Establish an SSH connection and execute commands on the remote server
+          ssh -o StrictHostKeyChecking=no -i private_key.pem user@your-server.com <<EOF
+            # Your server commands go here. Replace these commands with those relevant to your project.
+
+            cd  /home/www/psiliako/testt
+            git checkout main
+            git pull
+          EOF
+
+          rm -f private_key.pem # Remove the private key file after use for security
+    permissions:
+      contents: read
+      actions: write
+      id-token: write
