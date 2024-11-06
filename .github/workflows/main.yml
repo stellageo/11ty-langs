@@ -1,28 +1,26 @@
+
 name: Deploy to Server
 
 on:
   push:
     branches: [main]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Build Your Application
-        run: |
-          # Your build commands here
-          npm install
-          npm run build
-      - name: Deploy to Server
-        uses: actions/ssh@v3
+      - uses: actions/setup-node@v3
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          port: 22
-          private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd your_deploy_directory
-            # Your deployment commands here
-            git pull origin main
-            npm run build
-            # Restart your server or other deployment steps
+          node-version: '18'
+      - name: Install   
+ Dependencies
+        run: npm install
+      - name: Build the Application
+        run: npm run build
+      - name: Deploy   
+ to Server
+        uses: actions/exec@v3
+        with:
+          command: |
+            ssh -i ~/.ssh/${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd testt && git pull origin main && npm run build && npm run start"
