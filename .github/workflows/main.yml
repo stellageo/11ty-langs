@@ -13,13 +13,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: Install   
- Dependencies
+      - name: Install Dependencies
         run: npm install
       - name: Build the Application
         run: npm run build
-      - name: Deploy   
- to Server
+      - name: Deploy to Server
         uses: actions/exec@v3
         with:
           command: |
