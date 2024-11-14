@@ -1,23 +1,24 @@
+
+name: Deploy to Server
+
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
-  
+    branches: [main]
+
 jobs:
-  run_pull:
-    name: run pull
+  deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: install ssh keys
-      # check this thread to understand why its needed:
-      # https://stackoverflow.com/a/70447517
-      run: |
-        install -m 600 -D /dev/null ~/.ssh/id_rsa
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
-    - name: connect and pull
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
-    - name: cleanup
-      run: rm -rf ~/.ssh
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install Dependencies
+        run: npm install
+      - name: Build the Application
+        run: npm run build
+      - name: Deploy to Server
+        uses: actions/exec@v3
+        with:
+          command: |
+            ssh -i ~/.ssh/${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd testt && git pull origin main && npm run build && npm run start"
